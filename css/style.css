@@ -1,0 +1,576 @@
+/* Fuentes */
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+}
+
+body {
+    font-family: Manrope, serif;
+}
+
+
+/* Container */
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.calendar-content {
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
+    gap: 10px;
+}
+
+
+/* Tabla calendario */
+
+.calendar-header {
+    text-align: center;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendar-header-login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.calendar-header-login img {
+    width: 25px;
+    height: auto;
+    margin-top: 4px;
+}
+
+.calendar-header-login span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.calendar-header-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.calendar {
+    width: 100%;
+}
+
+.calendar, th, td {
+    border: 1px solid #6b6b6b;
+    border-collapse: collapse;
+}
+
+.calendar {
+    border: none;
+}
+
+.calendar td, .calendar th {
+    width: 80px;
+    padding: 5px;
+}
+
+.calendar, th {
+    height: 25px;
+}
+
+.calendar td {
+    height: 120px;
+}
+
+/* Select */
+
+.calendar-header select {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 22px;
+    padding: 1px 5px;
+}
+
+.calendar-client-select {
+
+}
+
+
+/* Días */
+
+td.dia {
+    position: relative;
+}
+
+.dia.selected {
+    background-color: #f8f8f8;
+    box-shadow: inset 0 0 4px 0 #919191;
+}
+
+.dia-mes-actual .dia-number {
+    font-weight: bold;
+}
+
+.dia-mes-anterior .dia-number, .dia-mes-siguiente .dia-number {
+    color: gray;
+}
+
+.dia-number {
+    font-size: 18px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.dia-content {
+    display: flex;
+    position: absolute;
+    width: calc(100% - 10px);
+    bottom: 5px;
+    left: 5px;
+    justify-content: space-between;
+}
+
+.dia:hover .publicacion:not(.active) {
+    filter: opacity(0.3);
+}
+
+.publicacion.active {
+    filter: opacity(1);
+}
+
+.publicacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
+    filter: opacity(0);
+    aspect-ratio: 1/1;
+    transition: transform ease 0.2s;
+    position: relative;
+}
+
+.publicacion.selected {
+    box-shadow: #3d3d3d 0 0 0 2px;
+    border-radius: 3px;
+}
+
+.publicacion.selected:not(.active) {
+    filter: opacity(0.3);
+}
+
+.publicacion:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.publicacion > img {
+    width: 100%;
+    height: 100%;
+}
+
+.publicacion-comentarios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -25px;
+}
+
+.publicacion-comentarios > img {
+    width: 100%;
+    height: auto;
+}
+
+.publicacion-comentarios > label {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    padding-bottom: 2px;
+}
+
+
+/* Calendar form */
+
+.calendar-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 100px 20px;
+    gap: 20px;
+    width: 300px;
+    background-color: #3a8bff;
+    border-radius: 15px 0 0 15px;
+    position: relative;
+}
+
+.publicacion-form-comentarios {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+.publicacion-form-comentarios > img {
+    width: 30px;
+    height: auto;
+}
+
+.publicacion-form-comentarios > label {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+.calendar-form input:not(.publicacion-files), .calendar-form textarea {
+    border: 0;
+    border-radius: 5px;
+    min-height: 30px;
+    padding: 5px 10px;
+}
+
+.calendar-form textarea {
+    height: 150px;
+}
+
+.calendar-form input:focus-visible, .calendar-form textarea:focus-visible {
+    outline: none;
+}
+
+.publicacion-header {
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 22px;
+}
+
+.publicacion-files-progress {
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #a4a4a4;
+    position: relative;
+    display: none;
+}
+
+.publicacion-files-progress-bar {
+    width: 20%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #00861f;
+}
+
+.publicacion-files-progress .percent {
+    position: absolute;
+    bottom: 4px;
+    left: 10px;
+    color: white;
+}
+
+.publicacion-files-container label {
+    color: white;
+}
+
+.publicacion-files-uploaded {
+    margin-top: 10px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.publicacion-files {
+    color: white;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.publicacion-files::file-selector-button:hover {
+    cursor: pointer;
+}
+
+.publicacion-files::file-selector-button {
+    background-color: white;
+    border: 0;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.publicacion-files-container > label {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.publicacion-file-name {
+    color: white;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+.publicacion-file-name a {
+    text-overflow: ellipsis;
+    color: white;
+    font-size: 14px;
+}
+
+.publicacion-info {
+    color: white;
+    font-size: 14px;
+}
+
+.publicacion-buttons {
+    display: none;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    width: 88%;
+    left: 6%;
+}
+
+.upload-publicacion, .create-publicacion, .delete-publicacion {
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: #3434345c 1px 1px 7px 2px;
+    transition: box-shadow 0.3s ease;
+}
+
+.upload-publicacion:hover, .create-publicacion:hover, .delete-publicacion:hover {
+    box-shadow: #3434345c 1px 1px 7px 4px;
+}
+
+.delete-publicacion {
+    width: 50%;
+}
+
+.upload-publicacion, .create-publicacion {
+    background-color: #51cb56;
+    width: 50%;
+}
+
+.create-publicacion {
+    width: 100%;
+}
+
+.publicacion-file-type img {
+    width: 20px;
+    height: 20px;
+}
+
+.publicacion-file-delete {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.publicacion-file-delete img {
+    width: 15px;
+    height: 15px;
+}
+
+
+.publicacion-file-delete, .publicacion-file-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.publicacion-file-delete:hover {
+    transform: scale(1.1);
+}
+
+.publicacion-file {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background-color: #71abff;
+    border-radius: 10px;
+}
+
+.publicacion-enlace-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.publicacion-enlace-link {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.publicacion-enlace-link:hover {
+    transform: scale(1.1);
+}
+
+.publicacion-enlace {
+    width: 100%;
+    padding-right: 35px !important;
+}
+
+.calendar td:last-of-type {
+    position: relative;
+}
+
+.calendar-week-link {
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    right: -40px;
+    padding: 0 5px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.calendar tr:hover .calendar-week-link > img {
+    transform: translateX(0);
+
+}
+
+.calendar-week-link > img {
+    width: 25px;
+    height: 25px;
+    transform: translateX(-40px);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.calendar-week-link > img:hover {
+    transform: scale(1.05);
+}
+
+.publicacion-replicate-container {
+    flex-direction: column;
+    gap: 15px;
+    display: none;
+}
+
+.publicacion-replicate-container > label {
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+}
+
+.publicacion-replicate {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    padding: 5px;
+    box-sizing: content-box;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.publicacion-replicate-social {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.publicacion-replicate-social:hover {
+    transform: scale(1.1);
+}
+
+.publicacion-replicate-social > img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Calendar Pagination */
+
+.calendar-numbers {
+    position: absolute;
+    top: -26px;
+    left: 12px;
+    display: none;
+    gap: 3px;
+}
+
+.calendar-number, .calendar-number-add {
+    width: 30px;
+    height: 25px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3a8bff;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #3a8bff;
+    border-radius: 5px 5px 0 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.calendar-number.active, .calendar-number-add.active {
+    background-color: #3a8bff;
+    color: white;
+}
+
+.calendar-number-add {
+    font-size: 22px;
+}
+
+.calendar-number:not(.active):hover, .calendar-number-add:not(.active):hover {
+    background-color: rgba(58, 139, 255, 0.16);
+}
